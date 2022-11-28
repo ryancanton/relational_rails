@@ -1,0 +1,9 @@
+# app/views/authors/index.html.erb
+
+<h1>All Authors</h1>
+<br>
+<% if @authors != nil %>
+   <% @authors.each do |author| %>
+      <h3><%= author.name %></h3>
+   <% end %>
+<% end %>

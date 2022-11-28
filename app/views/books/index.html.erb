@@ -1,0 +1,9 @@
+# app/views/books/index.html.erb
+
+<h1>All Books</h1>
+<br>
+<% if @books != nil %>
+   <% @books.each do |book| %>
+      <h3><%= book.name %></h3>
+   <% end %>
+<% end %>
