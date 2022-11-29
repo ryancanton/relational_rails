@@ -6,12 +6,12 @@ class AuthorsController < ApplicationController
     def new
 
     end
-    
+
     def create
       author = Author.new({
         name: params[:author][:name],
         rating: params[:author][:rating],
-        alive: params[:book][:alive]
+        alive: params[:author][:alive]
         })
   
       author.save
