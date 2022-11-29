@@ -3,6 +3,10 @@ class AuthorsController < ApplicationController
       @authors = Author.all
     end
 
+    def new
+
+    end
+    
     def create
       author = Author.new({
         name: params[:author][:name],

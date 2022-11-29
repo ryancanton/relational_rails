@@ -3,6 +3,10 @@ class BooksController < ApplicationController
       @books = Book.all
     end
 
+    def new
+
+    end
+
     def create
       book = Book.new({
         author_id: params[:book][:author_id],
