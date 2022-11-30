@@ -46,6 +46,7 @@ group :development do
   gem 'pry'
   gem 'simplecov'
   gem 'rspec-rails'
+  gem 'capybara'
 end
 
 
