@@ -4,6 +4,7 @@ class CreateBook < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :pages
       t.boolean :fiction
+      t.timestamps
     end
   end
 end

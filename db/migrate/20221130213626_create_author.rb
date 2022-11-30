@@ -4,6 +4,7 @@ class CreateAuthor < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :rating
       t.boolean :alive
+      t.timestamps
     end
   end
 end
