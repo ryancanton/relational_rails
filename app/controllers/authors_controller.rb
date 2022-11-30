@@ -4,7 +4,6 @@ class AuthorsController < ApplicationController
     end
 
     def new
-
     end
 
     def create
@@ -17,5 +16,8 @@ class AuthorsController < ApplicationController
       author.save
   
       redirect_to '/authors'
+    end
+
+    def show
     end
   end

@@ -11,4 +11,11 @@ RSpec.describe 'Index Page of Authors' do
         expect(page).to have_content(author_2.name)
         expect(page).to_not have_content(book_1.name)
     end
+
+    it 'displays header and link back to home page' do
+        visit "/authors"
+
+        expect(page).to have_content("All Authors")
+        expect(page).to have_content("Back to Home")
+    end
 end

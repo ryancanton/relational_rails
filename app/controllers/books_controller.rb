@@ -18,4 +18,7 @@ class BooksController < ApplicationController
   
       redirect_to '/books'
     end
+
+    def show
+    end
   end
