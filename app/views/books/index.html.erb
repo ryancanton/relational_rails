@@ -4,6 +4,8 @@
 <% if @books != nil %>
    <% @books.each do |book| %>
       <h3><%= book.name %></h3>
+      <h2>Pages: <%= book.pages %></h2>
+      <h2>Fiction?: <%= book.fiction %></h2>
    <% end %>
 <% end %>
 <br>
