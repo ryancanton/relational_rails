@@ -16,9 +16,9 @@ RSpec.describe 'The Author show page' do
 
     it 'shows the count of chilrden' do
         author_1 = Author.create!(name: "Stephen King", rating: 7, alive: true)
-        book_1 = author.books.create!(name: "It", pages: 1011, ficiton: true)
-        book_2 = author.books.create!(name: "The Shining", pages: 614, ficiton: true)
-        book_2 = author.books.create!(name: "Carrie", pages: 304, ficiton: true)
+        book_1 = author_1.books.create!(name: "It", pages: 1011, fiction: true)
+        book_2 = author_1.books.create!(name: "The Shining", pages: 614, fiction: true)
+        book_2 = author_1.books.create!(name: "Carrie", pages: 304, fiction: true)
         visit "/authors/#{author_1.id}"
 
         expect(page).to have_content("Author Book Count: #{author_1.book_count}")
