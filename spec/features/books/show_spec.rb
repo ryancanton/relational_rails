@@ -14,4 +14,10 @@ RSpec.describe 'The Book Show Page' do
         expect(page).to_not have_content(book_2.pages)
     end
 
+    it 'has a link to the books page' do
+        visit "/"
+        click_on("Book Index")
+
+        expect(current_path).to eq("/books")
+    end
 end

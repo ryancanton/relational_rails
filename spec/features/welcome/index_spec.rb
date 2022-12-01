@@ -9,4 +9,11 @@ RSpec.describe 'The Welcome page' do
         expect(page).to have_content("Author Index")
         expect(page).to have_content("New Author")
     end
+
+    it 'has a link to the books page' do
+        visit "/"
+        click_on("Book Index")
+
+        expect(current_path).to eq("/books")
+    end
 end

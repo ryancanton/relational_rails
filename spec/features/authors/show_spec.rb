@@ -23,4 +23,11 @@ RSpec.describe 'The Author show page' do
 
         expect(page).to have_content("Author Book Count: #{author_1.book_count}")
     end
+
+    it 'has a link to the books page' do
+        visit "/"
+        click_on("Book Index")
+
+        expect(current_path).to eq("/books")
+    end
 end
