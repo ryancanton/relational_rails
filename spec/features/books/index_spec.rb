@@ -22,4 +22,11 @@ RSpec.describe 'The Books Index Page' do
         expect(page).to have_content("All Books")
         expect(page).to have_content("Back to Home")
     end
+
+    it 'has a link to the authors page' do
+        visit "/"
+        click_on("Author Index")
+
+        expect(current_path).to eq("/authors")
+    end
 end
