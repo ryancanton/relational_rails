@@ -3,7 +3,8 @@
 <br>
 <% if @authors != nil %>
    <% @authors.each do |author| %>
-      <h3><%= author.name %></h3> <br>
+      <h3><%= author.name %></h3> 
+      <h5>Created At: <%= author.created_at %></h5>
    <% end %>
 <% end %>
 <br>
