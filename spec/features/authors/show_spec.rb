@@ -25,16 +25,23 @@ RSpec.describe 'The Author show page' do
     end
 
     it 'has a link to the books page' do
-        visit "/"
+        visit "/authors/#{author_1.id}"
         click_on("Book Index")
 
         expect(current_path).to eq("/books")
     end
 
     it 'has a link to the authors page' do
-        visit "/"
+        visit "/authors/#{author_1.id}"
         click_on("Author Index")
 
         expect(current_path).to eq("/authors")
+    end
+
+    it 'has a link to the authors books page' do
+        visit "/authors/#{author_1.id}"
+        click_on("Author's books")
+
+        expect(current_path).to eq("/authors/#{author_1.id}/books")
     end
 end
