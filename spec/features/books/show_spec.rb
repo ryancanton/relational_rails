@@ -15,6 +15,8 @@ RSpec.describe 'The Book Show Page' do
     end
 
     it 'has a link to the books page' do
+        author_1 = Author.create!(name: "Stephen King", rating: 7, alive: true)
+        book_1 = author_1.books.create!(name: "It", pages: 1011, fiction: true)
         visit "/books/#{book_1.id}"
         click_on("Book Index")
 
@@ -22,6 +24,8 @@ RSpec.describe 'The Book Show Page' do
     end
 
     it 'has a link to the authors page' do
+        author_1 = Author.create!(name: "Stephen King", rating: 7, alive: true)
+        book_1 = author_1.books.create!(name: "It", pages: 1011, fiction: true)
         visit "/books/#{book_1.id}"
         click_on("Author Index")
 
