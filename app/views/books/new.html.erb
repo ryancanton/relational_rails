@@ -1,0 +1,17 @@
+<form action="/books" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new book:</p>
+  <label for="book[author_id]">Author id:</label><br>
+  <input type='text' id='book[author_id]' name='book[author_id]'/><br/>
+
+  <label for="book[name]">Book title:</label><br>
+  <input type='text' id='book[name]' name='book[name]'/><br/>
+
+  <label for="book[pages]">Number of pages:</label><br>
+  <input type='text' id='book[pages]' name='book[pages]'/><br/>
+
+  <label for="book[fiction]">Fiction?:</label><br>
+  <input type='checkbox' id='book[fiction]' name='book[fiction]'/><br/>
+
+  <input type='submit'/>
+</form>

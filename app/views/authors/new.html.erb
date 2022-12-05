@@ -1,0 +1,11 @@
+<form action="/authors" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new author:</p>
+  <label for="author[name]">Author name:</label><br>
+  <input type='text' id='author[name]' name='author[name]'/><br/>
+  <label for="author[rating]">Rating:</label><br>
+  <input type='text' id='author[rating]' name='author[rating]'/><br/>
+  <label for="author[alive]">Alive?:</label><br>
+  <input type='checkbox' id='author[alive]' name='author[alive]'/><br/>
+  <input type='submit'/>
+</form>
