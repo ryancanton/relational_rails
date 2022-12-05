@@ -21,6 +21,7 @@ class AuthorsController < ApplicationController
       @books = Book.where(author_id: @author.id)
     end
 
+  private
     def author_params
       params.permit(:name, :rating, :alive)
     end
