@@ -1,6 +1,4 @@
-
-<h1>All Books</h1>
-<br>
+<h1><%= @author.name %>'s Books: </h1>
 <% if @books != nil %>
    <% @books.each do |book| %>
       <h3><%= book.name %></h3>
@@ -8,6 +6,5 @@
       <h2>Fiction?: <%= book.fiction %></h2>
    <% end %>
 <% end %>
-<br>
-<a href="/">Back to Home</a>
+<a href="/books">Book Index</a>
 <a href="/authors">Author Index</a>

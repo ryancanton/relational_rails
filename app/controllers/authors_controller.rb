@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
     def index
-      @authors = Author.all
+      @authors = Author.order(created_at: :desc).limit(200)
     end
 
     def new
@@ -20,5 +20,10 @@ class AuthorsController < ApplicationController
 
     def show
       @author = Author.find(params[:id])
+    end
+
+    def books
+      @author = Author.find(params[:id])
+      @books = Book.where(author_id: @author.id)
     end
   end
