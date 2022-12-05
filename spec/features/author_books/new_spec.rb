@@ -21,4 +21,17 @@ RSpec.describe 'Creating a new book' do
         expect(current_path).to eq("/authors/#{author.id}/books/new")
     end
 
+    it 'Can create a new book and redirect to authors/:id/books page' do
+        author = Author.create!(name: 'Vladmir Nabokov', rating: 10, alive: false)
+
+        visit "/authors/#{author.id}/books/new"
+        fill_in('Name', with: 'Pale Fire')
+        fill_in('Pages', with: '344')
+        click_button('Fiction')
+        click_button('Create Book')
+
+        expect(current_path).to eq("/authors/#{author.id}/books")
+        expect(page).to have_content("Pale Fire")
+    end
+
 end
