@@ -1,5 +1,6 @@
 <h1><%= @book.name %></h1>
 <h3>Pages: <%= @book.pages %></h3>
 <h3>Fiction?: <%= @book.fiction %></h3>
+<%= link_to "Update Book", "/books/#{@book.id}/edit", method: :get %>
 <a href="/books">Book Index</a>
 <a href="/authors">Author Index</a>
