@@ -27,7 +27,7 @@ RSpec.describe 'Creating a new book' do
         visit "/authors/#{author.id}/books/new"
         fill_in('Name', with: 'Pale Fire')
         fill_in('Pages', with: '344')
-        click_button('Fiction')
+        check('Fiction')
         click_button('Create Book')
 
         expect(current_path).to eq("/authors/#{author.id}/books")

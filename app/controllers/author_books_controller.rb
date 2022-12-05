@@ -5,11 +5,18 @@ class AuthorBooksController < ApplicationController
     end
 
     def new
+        @author = Author.find(params[:id])
     end
 
     def create
-        author_id = params[:id]
-        Book.create(book_params.merge(author_id))
+        Book.create({
+        name: params[:name],
+        pages: params[:pages],
+        fiction: params[:fiction],
+        author_id: params[:id]
+        })
+
+        redirect_to "/authors/#{params[:id]}/books"
     end
 
 private
