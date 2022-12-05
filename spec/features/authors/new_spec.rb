@@ -14,10 +14,10 @@ RSpec.describe 'Author Creation' do
     it 'When clicking the New Author link from /authors, user is directed to /authors/new' do
         visit "/authors"
 
-        click_link "New Parent"
+        click_link "New Author"
         
 
-        expect(current_path).to be("/authors/new")
+        expect(current_path).to eq("/authors/new")
     end
 
     it 'Creates and stores a new author after submitting filled out form' do
@@ -26,7 +26,7 @@ RSpec.describe 'Author Creation' do
         fill_in('Rating', with: '8')
         click_button('Create Author')
 
-        expect(current_path).to be("/authors")
+        expect(current_path).to eq("/authors")
         expect(page).to have_content("Charles Bukowski")
     end
 
