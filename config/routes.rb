@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/books/:id', to: 'books#show'
   post '/authors', to: 'authors#create'
   post '/books', to: 'books#create'
+  patch '/authors/:id', to: 'authors#update'
+  get '/authors/:id/edit', to: 'authors#edit'
 end

@@ -16,6 +16,16 @@ class AuthorsController < ApplicationController
       @author = Author.find(params[:id])
     end
 
+    def edit 
+      @author = Author.find(params[:id])
+    end
+
+    def update
+      author = Author.find(params[:id])
+      author.update(author_params)
+      redirect_to "/authors/#{author.id}"
+    end
+
     def books
       @author = Author.find(params[:id])
       @books = Book.where(author_id: @author.id)

@@ -15,9 +15,9 @@ RSpec.describe 'Updating Authors' do
         author = Author.create!(name: 'Charles Bukowski', rating: 8, alive: false)
 
         visit "authors/#{author.id}"
-        click_link "Update Author"
+        click_button "Update Author"
 
-        expect(current_path).to eq("authors/#{author.id}/edit")
+        expect(current_path).to eq("/authors/#{author.id}/edit")
     end
 
     it 'Will update the author and return to show page' do
@@ -29,7 +29,7 @@ RSpec.describe 'Updating Authors' do
         fill_in('Rating', with: '8')
         click_button('Update Author')
 
-        expect(current_path).to eq("authors/#{author.id}")
+        expect(current_path).to eq("/authors/#{author.id}")
         expect(page).to have_content("Charles Bukowski")
     end
 end

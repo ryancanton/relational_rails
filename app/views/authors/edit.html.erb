@@ -1,0 +1,9 @@
+<%= form_with url: "/authors/#{@author.id}", method: :patch, local: true do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :rating %>
+    <%= form.text_field :rating %>
+    <%= form.label :alive %>
+    <%= form.check_box :alive %>
+    <%= form.submit 'Update Author' %>
+<% end %>

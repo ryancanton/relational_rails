@@ -2,6 +2,7 @@
 <h3>Rating: <%= @author.rating %></h3>
 <h3>Alive?: <%= @author.alive %></h3>
 <h3>Author Book Count: <%= @author.book_count %>
+<%= button_to "Update Author", "/authors/#{@author.id}/edit", method: :get %>
 <a href="/books">Book Index</a>
 <a href="/authors">Author Index</a>
 <%=link_to("Books By Author", "/authors/#{@author.id}/books")%>
