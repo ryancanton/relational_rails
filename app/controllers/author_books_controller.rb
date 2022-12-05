@@ -21,6 +21,6 @@ class AuthorBooksController < ApplicationController
 
 private
     def book_params
-        params.permit(:name, :pages, :fiction)
+        params.permit(:name, :pages, :fiction, :id)
     end
 end
