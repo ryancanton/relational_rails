@@ -19,4 +19,18 @@ RSpec.describe 'Editing books' do
 
         expect(current_path).to eq("/books/#{book.id}/edit")
     end
+
+    it 'a book can be edited, and the edits are shown on the books show page' do
+        author = Author.create!(name: 'Vladmir Nabokov', rating: 10, alive: false)
+        book = author.books.create(name: 'Pale Fir', pages: 344, fiction: true)
+
+        visit "/books/#{book.id}/edit"
+        fill_in('Name', with: 'Pale Fire')
+        fill_in('Pages', with: '344')
+        check('Fiction')
+        click_button('Update Book')
+
+        expect(current_path).to eq("/books/#{book.id}")
+        expect(page).to have_content("Pale Fire")
+    end
 end
