@@ -8,6 +8,7 @@
          <h2>Pages: <%= book.pages %></h2>
          <h2>Fiction: <%= book.fiction %></h2>
          <%=link_to("Edit #{book.name}", "/books/#{book.id}/edit")%>
+         <%=link_to("Delete #{book.name}", "/books/#{book.id}", method: :delete)%>
       <% end %>
    <% end %>
 <% end %>

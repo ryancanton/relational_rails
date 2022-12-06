@@ -6,6 +6,7 @@
       <h3><%= author.name %></h3> 
       <h5>Created At: <%= author.created_at %></h5>
       <%=link_to("Edit #{author.name}", "/authors/#{author.id}/edit")%>
+      <%=link_to("Delete #{author.name}", "/authors/#{author.id}", method: :delete)%>
    <% end %>
 <% end %>
 <br>
