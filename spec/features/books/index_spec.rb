@@ -45,6 +45,18 @@ RSpec.describe 'The Books Index Page' do
         expect(page).to_not have_content(book_3.fiction)
     end
 
+    it 'each book has a link to delete the book, reloading the page without the deleted book' do
+        author_1 = Author.create!(name: 'Stephen King', rating: 7, alive: true)
+        book_1 = author_1.books.create!(name: "It", pages: 1011, fiction: true)
+        book_2 = author_1.books.create!(name: "Different Seasons", pages: 355, fiction: true)
+
+        visit "/books"
+        click_link "Delete It"
+
+        expect(current_path).to eq("/books")
+        expect(page).to_not have_content("It")
+    end
+
     it 'has a header' do
         visit "/books"
         
