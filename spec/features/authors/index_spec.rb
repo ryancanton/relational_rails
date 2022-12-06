@@ -12,11 +12,10 @@ RSpec.describe 'Index Page of Authors' do
         expect(page).to_not have_content(book_1.name)
     end
 
-    it 'displays header and link back to home page' do
+    it 'displays header' do
         visit "/authors"
 
         expect(page).to have_content("All Authors")
-        expect(page).to have_content("Back to Home")
     end
 
     it 'orders authors by by most recently created first and displays when each author is created' do
@@ -25,7 +24,17 @@ RSpec.describe 'Index Page of Authors' do
         author_3 = Author.create!(name: 'Mark Twain', rating: 9, alive: false)  
         visit "/authors" 
         
-        expect(page).to have_content("Mark Twain\nCreated At: #{author_3.created_at}\nVladmir Nabokov\nCreated At: #{author_2.created_at}\nStephen King\nCreated At: #{author_1.created_at}")
+        expect(page).to have_content("Mark Twain\nCreated At: #{author_3.created_at}\nEdit Mark Twain\nVladmir Nabokov\nCreated At: #{author_2.created_at}\nEdit Vladmir Nabokov\nStephen King\nCreated At: #{author_1.created_at}")
+    end
+
+    it 'each author has a link that leads to that authors edit page' do
+        author_1 = Author.create!(name: 'Stephen King', rating: 7, alive: true)
+        author_2 = Author.create!(name: 'Vladmir Nabokov', rating: 10, alive: false)  
+        author_3 = Author.create!(name: 'Mark Twain', rating: 9, alive: false)  
+        visit "/authors" 
+        click_link "Edit Stephen King"
+
+        expect(current_path).to eq("/authors/#{author_1.id}/edit")
     end
 
     it 'has a link to the books page' do

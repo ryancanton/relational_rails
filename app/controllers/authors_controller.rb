@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
     def index
-      @authors = Author.order(created_at: :desc).limit(200)
+      @authors = Author.order(created_at: :desc)
     end
 
     def new
@@ -8,7 +8,6 @@ class AuthorsController < ApplicationController
 
     def create
       author = Author.create(author_params)
-  
       redirect_to '/authors'
     end
 
@@ -24,6 +23,13 @@ class AuthorsController < ApplicationController
       author = Author.find(params[:id])
       author.update(author_params)
       redirect_to "/authors/#{author.id}"
+    end
+
+    def destroy
+      author = Author.find(params[:id])
+      Book.where(author_id: params[:id]).destroy_all
+      author.destroy
+      redirect_to "/authors"
     end
 
 
