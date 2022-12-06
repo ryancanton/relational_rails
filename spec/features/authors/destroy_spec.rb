@@ -9,11 +9,11 @@ require 'rails_helper'
 
 RSpec.describe 'Deleting an author' do
     it 'the show page contains a link that deletes the parent and all children' do
-        author_1 = Author.create!(name: "Stephen King", rating: 7, alive: true)
-        book_1 = author_1.books.create!(name: "It", pages: 1011, fiction: true)
-        book_2 = author_1.books.create!(name: "The Shining", pages: 607, fiction: true)
+        author = Author.create!(name: "Stephen King", rating: 7, alive: true)
+        book_1 = author.books.create!(name: "It", pages: 1011, fiction: true)
+        book_2 = author.books.create!(name: "The Shining", pages: 607, fiction: true)
         visit "/authors/#{author.id}"
-        click_link "Delete Stephen King"
+        click_link "Delete Author"
 
         expect(current_path).to eq("/authors")
         expect(page).to_not have_content("Stephen King")
