@@ -3,7 +3,7 @@
 <br>
 <% if @authors != nil %>
    <% @authors.each do |author| %>
-      <h3><%= author.name %></h3> 
+      <h3><%=link_to("#{author.name}", "/authors/#{author.id}", method: :get)%></h3> 
       <h5>Created At: <%= author.created_at %></h5>
       <%=link_to("Edit #{author.name}", "/authors/#{author.id}/edit")%>
       <%=link_to("Delete #{author.name}", "/authors/#{author.id}", method: :delete)%>

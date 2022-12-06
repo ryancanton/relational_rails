@@ -1,13 +1,12 @@
 <h1><%= @author.name %>'s Books: </h1>
 <% if @books != nil %>
    <% @books.each do |book| %>
-      <h3><%= book.name %></h3>
-      <h2>Pages: <%= book.pages %></h2>
-      <h2>Fiction?: <%= book.fiction %></h2>
+      <h3><%=link_to("#{book.name}", "/books/#{book.id}")%></h3>
+      <h5>Pages: <%= book.pages %></h5>
+      <h5>Fiction?: <%= book.fiction %></h5>
    <% end %>
 <% end %>
-<a href="/books">Book Index</a>
-<a href="/authors">Author Index</a>
+<br>
 <%=link_to("Create Book", "/authors/#{@author.id}/books/new")%>
 <%=link_to "Alphabetize Book List", "/authors/#{@author.id}/books?alpha=true", method: :get %>
 <%= form_with url: "/authors/#{@author.id}/books", method: :get, local: true do |form| %>
@@ -15,3 +14,6 @@
     <%= form.text_field :threshold %>
     <%= form.submit 'Only return records with more than x pages.' %>
 <% end %>
+<br>
+<a href="/books">Book Index</a>
+<a href="/authors">Author Index</a>
