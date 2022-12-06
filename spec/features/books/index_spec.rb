@@ -16,6 +16,16 @@ RSpec.describe 'The Books Index Page' do
         expect(page).to have_content(book_2.fiction)
     end
 
+    it 'each author has a link that leads to that authors edit page' do
+        author_1 = Author.create!(name: 'Stephen King', rating: 7, alive: true)
+        book_1 = author_1.books.create!(name: "It", pages: 1011, fiction: true)
+        book_2 = author_1.books.create!(name: "Different Seasons", pages: 355, fiction: true)
+        visit "/books" 
+        click_link "Edit It"
+
+        expect(current_path).to eq("/books/#{book_1.id}/edit")
+    end
+
     it 'I only see records where the boolean column is `true`' do
         author_1 = Author.create!(name: "Stephen King", rating: 7, alive: true)
         author_2 = Author.create!(name: "Vladmir Nabokov", rating: 10, alive: false)
