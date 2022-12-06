@@ -3,7 +3,10 @@ class AuthorBooksController < ApplicationController
         @author = Author.find(params[:id])
         @books = Book.where(author_id: @author.id)
         if params[:alpha]
-            @books = Book.where(author_id: @author.id).order(name: :asc)
+            @books = Book.alphabetize(@author.id)
+        end
+        if params[:threshold]
+            @books = Book.above_threshold(params[:threshold], @author.id)
         end
     end
 

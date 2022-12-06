@@ -30,6 +30,19 @@ RSpec.describe 'The author books page' do
         expect(page).to have_content("Carrie\nPages: 244\nFiction?: true\nIt\nPages: 1011\nFiction?: true\nThe Shining\nPages: 607\nFiction?: true")
     end
 
+    it 'contains a from that can be given a threshold, when submitted, reloads the page displaying books with pages over the given threshold' do
+        author_1 = Author.create!(name: "Stephen King", rating: 7, alive: true)
+        book_1 = author_1.books.create!(name: "The Shining", pages: 607, fiction: true)
+        book_2 = author_1.books.create!(name: "Carrie", pages: 244, fiction: true)
+        book_3 = author_1.books.create!(name: "It", pages: 1011, fiction: true)
+        visit "/authors/#{author_1.id}/books"
+        fill_in('Threshold', with: '500')
+        click_button 'Only return records with more than x pages.'
+
+        expect(current_path).to eq("/authors/#{author_1.id}/books")
+        expect(page).to_not have_content("Carrie")
+    end
+
     it 'has a link to the books page' do
         author_1 = Author.create!(name: "Stephen King", rating: 7, alive: true)
         visit "/authors/#{author_1.id}/books"
