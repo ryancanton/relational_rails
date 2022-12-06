@@ -3,11 +3,12 @@
 <br>
 <% if @books != nil %>
    <% @books.each do |book| %>
-      <h3><%= book.name %></h3>
-      <h2>Pages: <%= book.pages %></h2>
-      <h2>Fiction?: <%= book.fiction %></h2>
+      <% if book.fiction %>
+         <h3><%= book.name %></h3>
+         <h2>Pages: <%= book.pages %></h2>
+         <h2>Fiction: <%= book.fiction %></h2>
+      <% end %>
    <% end %>
 <% end %>
 <br>
-<a href="/">Back to Home</a>
 <a href="/authors">Author Index</a>
