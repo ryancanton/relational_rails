@@ -2,6 +2,9 @@ class AuthorBooksController < ApplicationController
     def index
         @author = Author.find(params[:id])
         @books = Book.where(author_id: @author.id)
+        if params[:alpha]
+            @books = Book.where(author_id: @author.id).order(name: :asc).limit(200)
+        end
     end
 
     def new
