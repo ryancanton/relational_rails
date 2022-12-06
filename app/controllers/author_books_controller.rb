@@ -3,7 +3,7 @@ class AuthorBooksController < ApplicationController
         @author = Author.find(params[:id])
         @books = Book.where(author_id: @author.id)
         if params[:alpha]
-            @books = Book.where(author_id: @author.id).order(name: :asc).limit(200)
+            @books = Book.where(author_id: @author.id).order(name: :asc)
         end
     end
 

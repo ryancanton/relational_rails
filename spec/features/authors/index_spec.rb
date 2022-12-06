@@ -27,6 +27,16 @@ RSpec.describe 'Index Page of Authors' do
         expect(page).to have_content("Mark Twain\nCreated At: #{author_3.created_at}\nVladmir Nabokov\nCreated At: #{author_2.created_at}\nStephen King\nCreated At: #{author_1.created_at}")
     end
 
+    it 'each author has a link that leads to that authors edit page' do
+        author_1 = Author.create!(name: 'Stephen King', rating: 7, alive: true)
+        author_2 = Author.create!(name: 'Vladmir Nabokov', rating: 10, alive: false)  
+        author_3 = Author.create!(name: 'Mark Twain', rating: 9, alive: false)  
+        visit "/authors" 
+        clcik_link "Edit Stephen King"
+
+        expect(current_path).to eq("/authors/#{author_1.id}/edit")
+    end
+
     it 'has a link to the books page' do
         visit "/authors"
         click_on("Book Index")
