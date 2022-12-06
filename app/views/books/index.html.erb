@@ -4,9 +4,12 @@
 <% if @books != nil %>
    <% @books.each do |book| %>
       <% if book.fiction %>
-         <h3><%= book.name %></h3>
-         <h2>Pages: <%= book.pages %></h2>
-         <h2>Fiction: <%= book.fiction %></h2>
+         <h3><%=link_to("#{book.name}", "/books/#{book.id}")%></h3>
+         <h5>Pages: <%= book.pages %></h5>
+         <h5>Fiction: <%= book.fiction %></h5>
+         <%=link_to("Edit #{book.name}", "/books/#{book.id}/edit")%>
+         <%=link_to("Delete #{book.name}", "/books/#{book.id}", method: :delete)%>
+         <br>
       <% end %>
    <% end %>
 <% end %>
